@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Food Trunks{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>🍜 Food Trunks – Dragon Ball Z</h1>
+    </header>
+    <nav>
+        <a href="{% url 'home' %}">Início</a> <!-- DICA: Nome da rota da home -->
+        <a href="{% url 'produtos' %}">Produtos</a> <!-- DICA: Nome da rota de produtos -->
+        <a href="{% url 'clientes' %}">Clientes</a> <!-- DICA: Nome da rota de clientes -->
+        <a href="{% url 'agenda' %}">Agenda</a> <!-- DICA: Nome da rota da agenda -->
+        <a href="{% url 'faturamento_mensal' %}">Faturamento</a> <!-- DICA: Nome da rotade faturamento -->
+        <a href="{% url 'produtos_mais_vendidos' %}">Mais Vendidos</a> <!-- DICA: Nome da rota dos mais vendidos -->
+        <a href="{% url 'grafico_produto' %}">Gráfico</a> <!-- DICA: Nome da rota do gráfico -->
+        <a href="{% url 'portifolio_produtos' %}">Portifolio Produtos</a> <!-- DICA: Nome darota do portfólio de produtos -->
+        <form action="{% url 'logout' %}" method="post" style="margin: 8px 16px;">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">
+                Logout
+            </button>
+        </form>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>
+                🍜 <strong>Food Trunks</strong> &copy; {{ now|date:"Y" }} — Sistema inspirado em Dragon Ball Z.
+            </span>
+            <span>
+                Feito com 💙 por DEV.AGILE e Pedro Henrique Ferreira Moraes
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>
